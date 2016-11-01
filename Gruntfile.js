@@ -13,13 +13,18 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 
 function createWindow () {
-    // Create the browser window.
+    /**
+     * Create the browser window.
+     * Other options see <a href="https://github.com/electron/electron/blob/master/docs/api/browser-window.md"/>
+     */
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
             webSecurity: false
-        }
+        },
+        fullscreenable: false,
+        resizable: false
     });
 
     // and load the index.html of the app.

@@ -15,4 +15,8 @@ body {
 body, html {
     overflow-x: hidden;
     overflow-y: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
 }
