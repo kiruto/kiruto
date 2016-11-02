@@ -2,6 +2,7 @@
  * Created by yuriel on 11/1/16.
  */
 import {Component, OnInit} from "@angular/core";
+import {DTEvents} from "../render/eventListener";
 
 @Component({
     moduleId: module.id,
@@ -12,6 +13,7 @@ export class DTContainerComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {
-
+        DTEvents.sendExampleEvent();
+        console.log("ngOnInit loaded");
     }
 }
