@@ -9,5 +9,15 @@ exports.load = function(ipcMain) {
         console.log(content)
     });
 
+    ipcMain.on(Events.shell_example, function (event, content) {
+        console.log("ls start");
+        require('../shell/ls.js').run(
+            function(err, stdout, stderr){
+                console.log(stdout)
+            }
+        );
+        console.log("ls end")
+    });
+
     console.log("ipc main listener loaded");
 };

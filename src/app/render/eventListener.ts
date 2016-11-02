@@ -10,6 +10,6 @@ export class DTEvents {
 
     static sendExampleEvent(): void {
         ipcRenderer.send(Events.example, 'content');
-        console.log(Events)
+        ipcRenderer.send(Events.shell_example, '');
     }
 }
