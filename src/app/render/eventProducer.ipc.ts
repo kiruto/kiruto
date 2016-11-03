@@ -1,5 +1,5 @@
 //import {Events} from "../../constant/event.constant";
-var Events = require("../../constant/event.js").events;
+const Events = require("../../constant/event.js").events;
 /**
  * Created by yuriel on 11/2/16.
  */

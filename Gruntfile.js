@@ -39,7 +39,12 @@ function createWindow () {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null
-    })
+    });
+
+    mainWindow.webContents.on('will-navigate', function(event, deviceList, callback) {
+        console.log(event);
+        callback();
+    });
 }
 
 // This method will be called when Electron has finished

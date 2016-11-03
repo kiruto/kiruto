@@ -6,3 +6,4 @@ typings
 src/app/**/*.js
 src/app/**/*.js.map
 *.log
+*.log.*

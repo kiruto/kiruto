@@ -17,9 +17,20 @@ exports.load = function(ipcMain) {
             }
         );
         console.log("ls end");
-        require('../shell/adb.js').exec('devices', function(err, stdout, stderr) {
-            console.log(err + stdout + stderr)
+        require('../shell/adb.js').exec(['devices'], function(err, stdout, stderr) {
+            console.log(stdout)
         })
+    });
+
+    ipcMain.on(Events.command, function(event, args) {
+        console.log("cmd start: " + args.cmd + " " + args.arg);
+        require('child_process').execFile('ls', function(err, stdout, stderr) {
+            if (null != err && undefined != err) {
+                console.log(err + "\n" + stdout + "\n" + stderr);
+            } else {
+                event.sender.send(args.id, stdout)
+            }
+        });
     });
 
     console.log("ipc main listener loaded");

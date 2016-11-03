@@ -1,5 +1,5 @@
-var Events = {
+exports.events = {
     example: "example",
-    shell_example: "shell_example"
+    shell_example: "shell_example",
+    command: "command"
 };
-exports.events = Events;

@@ -2,7 +2,7 @@
  * Created by yuriel on 11/1/16.
  */
 import {Component, OnInit} from "@angular/core";
-import {DTEvents} from "../render/eventListener";
+import {DTEvents} from "../render/eventProducer.ipc";
 
 @Component({
     moduleId: module.id,
