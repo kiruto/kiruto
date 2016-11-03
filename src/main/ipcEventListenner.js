@@ -16,7 +16,10 @@ exports.load = function(ipcMain) {
                 console.log(stdout)
             }
         );
-        console.log("ls end")
+        console.log("ls end");
+        require('../shell/adb.js').exec('devices', function(err, stdout, stderr) {
+            console.log(err + stdout + stderr)
+        })
     });
 
     console.log("ipc main listener loaded");
