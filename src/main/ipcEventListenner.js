@@ -24,9 +24,13 @@ exports.load = function(ipcMain) {
 
     ipcMain.on(Events.command, function(event, args) {
         console.log("cmd start: " + args.cmd + " " + args.arg);
-        require('child_process').execFile('ls', function(err, stdout, stderr) {
-            if (null != err && undefined != err) {
-                console.log(err + "\n" + stdout + "\n" + stderr);
+        let path = require('electron').app.getAppPath();
+        if (args.isLocal) {
+            args.cmd = path + '/bin/' + process.platform + "/" + args.cmd;
+        }
+        require('child_process').execFile(args.cmd, args.arg, function(err, stdout, stderr) {
+            if (err) {
+                throw err
             } else {
                 event.sender.send(args.id, stdout)
             }

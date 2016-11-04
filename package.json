@@ -19,9 +19,7 @@
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
     "electron": "^1.4.1",
-
     "material-design-lite": "1.2.1",
-
     "@angular/common": "~2.1.0",
     "@angular/compiler": "~2.1.0",
     "@angular/core": "~2.1.0",
@@ -41,7 +39,8 @@
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
+    "electron-packager": "^8.2.0",
     "typescript": "^2.0.3",
-    "typings":"^1.4.0"
+    "typings": "^1.4.0"
   }
 }

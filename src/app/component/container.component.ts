@@ -3,6 +3,7 @@
  */
 import {Component, OnInit} from "@angular/core";
 import {DTEvents} from "../render/eventProducer.ipc";
+import {Transfer} from "../render/transfer.command";
 
 @Component({
     moduleId: module.id,
@@ -14,6 +15,9 @@ export class DTContainerComponent implements OnInit {
 
     ngOnInit() {
         DTEvents.sendExampleEvent();
+        Transfer.call('adb', ['devices'], function(event, contents) {
+            console.log(contents)
+        }, true);
         console.log("ngOnInit loaded");
     }
 }

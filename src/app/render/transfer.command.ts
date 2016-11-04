@@ -7,11 +7,13 @@ const ipcRenderer = electron.ipcRenderer;
 const Events = require("../../constant/event.js").events;
 export class Transfer {
 
-    static call(cmd: String, args: String[], cb: (event, contents)=>any) {
-        let cmdArg = new CmdArgs(cmd, args);
+    static call(cmd: String, args: String[], cb: (event, contents)=>any, isLocal = false) {
+        let cmdArg = new CmdArgs(cmd, args, isLocal);
         ipcRenderer.send(Events.command, cmdArg);
-        ipcRenderer.on(cmdArg.id, function(event, contents) {
+        let listener = function(event, contents) {
+            ipcRenderer.removeListener(cmdArg.id, listener);
             cb(event, contents)
-        })
+        };
+        ipcRenderer.on(cmdArg.id, listener)
     }
 }
