@@ -4,6 +4,7 @@
 import {Component, OnInit} from "@angular/core";
 import {DTEvents} from "../render/eventProducer.ipc";
 import {Transfer} from "../render/transfer.command";
+import {CyclicTask} from "../render/cyclicTask.query";
 
 @Component({
     moduleId: module.id,
@@ -15,9 +16,11 @@ export class DTContainerComponent implements OnInit {
 
     ngOnInit() {
         DTEvents.sendExampleEvent();
-        Transfer.call('adb', ['devices'], function(event, contents) {
-            console.log(contents)
-        }, true);
-        console.log("ngOnInit loaded");
+        let task = CyclicTask.run(
+            function() {
+                Transfer.call('adb', ['devices'], function(event, contents) {
+                    console.log(contents)
+                }, true);
+            }, 3000);
     }
 }
